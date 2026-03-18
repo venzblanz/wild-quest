@@ -47,6 +47,9 @@ class LoginActivity : AppCompatActivity() {
                 intent.putExtra("username", get_user.username)
                 intent.putExtra("password", get_user.password)
                 intent.putExtra("email", get_user.email)
+//                intent.getStringExtra("username").let{
+//                    textView.text = "WELCOME $it"
+//                }
                 startActivity(intent)
             }else{
                 Toast.makeText(this,"Wrong credentials", Toast.LENGTH_LONG).show()
