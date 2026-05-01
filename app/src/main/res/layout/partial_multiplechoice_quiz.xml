@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="12dp">
+
+    <!-- Option A -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOptionA"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_outlined"
+        android:text="A.  Option A"
+        android:textColor="@color/maroon"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="16dp" />
+
+    <!-- Option B -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOptionB"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_outlined"
+        android:text="B.  Option B"
+        android:textColor="@color/maroon"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="16dp" />
+
+    <!-- Option C -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOptionC"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_outlined"
+        android:text="C.  Option C"
+        android:textColor="@color/maroon"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="16dp" />
+
+    <!-- Option D -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOptionD"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/button_outlined"
+        android:text="D.  Option D"
+        android:textColor="@color/maroon"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="16dp" />
+
+</LinearLayout>

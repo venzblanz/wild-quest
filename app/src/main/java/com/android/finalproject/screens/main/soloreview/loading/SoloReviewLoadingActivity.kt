@@ -1,16 +1,14 @@
-package com.android.finalproject
+package com.android.finalproject.screens.main.soloreview.loading
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.android.finalproject.R
 
-class DashboardActivity : AppCompatActivity() {
+class SoloReviewLoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_dashboard)
-
+        setContentView(R.layout.activity_solo_review_loading)
     }
 }

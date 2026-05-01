@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".screens.main.soloreview.quiz.SoloQuizActivity"
+    android:orientation="vertical">
+
+    <!-- Nav Bar -->
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/maroon"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:layout_marginBottom="9dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="2"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_leaderboard"
+            android:background="@color/maroon"/>
+
+        <ImageButton
+            android:id="@+id/notification_icon"
+            android:layout_width="0dp"
+            android:layout_gravity="bottom"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="9dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+    </LinearLayout>
+
+    <!-- Card -->
+    <LinearLayout
+        android:id="@+id/contents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="16dp"
+        android:padding="20dp"
+        android:elevation="20dp"
+        android:background="@drawable/rounded_corners"
+        android:orientation="vertical">
+
+        <!-- Score row + Previous button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/previousBtn"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textColor="@color/maroon"
+                android:background="@drawable/button_outlined"
+                android:backgroundTint="@null"
+                app:backgroundTint="@null"
+                android:fontFamily="@font/irishgrover"
+                android:text="Previous"/>
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/irishgrover"
+                android:text="Score:  "
+                android:textAlignment="viewEnd"/>
+
+        </LinearLayout>
+
+        <!-- Question number -->
+        <TextView
+            android:id="@+id/tv_question_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/irishgrover"
+            android:text="Question 1"/>
+
+        <!-- FIX 2: weight=1 directly on tv_question, no wrapper LinearLayout -->
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/irishgrover"
+            android:text="Question"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            tools:ignore="RtlCompat" />
+
+        <!-- FIX 1: match_parent width, no stray android:layout= attribute -->
+        <FrameLayout
+            android:id="@+id/quiz_answer_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Answer / Next button -->
+        <LinearLayout
+            android:id="@+id/answerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_clickable_linear"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/btn_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/irishgrover"
+                android:text="Answer"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Footer Logo -->
+    <include layout="@layout/partial_footer_logo_home_button" />
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/maroon"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/menu_icon"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="9dp"
+            android:layout_weight="1"
+            android:background="@color/maroon"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_general" />
+
+        <ImageButton
+            android:id="@+id/leaderboard_icon"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2"
+            android:background="@color/maroon"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_leaderboard" />
+
+        <ImageButton
+            android:id="@+id/notification_icon"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="9dp"
+            android:layout_weight="1"
+            android:background="@color/maroon"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_notification" />
+
+    </LinearLayout>
+</merge>

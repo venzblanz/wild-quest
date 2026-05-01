@@ -3,26 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".app.WildQuestApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="WildQuestApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
+
+        <!--        /main       -->
         <activity
-            android:name=".DashboardActivity"
+            android:name=".screens.sub.logopage.LogoPageActivity"
+            android:exported="false" />
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".screens.main.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".screens.main.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LogoPageActivity"
+            android:name=".screens.main.dashboard.DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +38,54 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!--        /main/groupreview       -->
+        <activity
+            android:name=".screens.main.groupreview.loading.GroupReviewLoadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.lobby.GroupReviewLobbyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.scoretally.GroupScoreTallyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.quiz.GroupQuizActivity"
+            android:exported="false" />
+
+        <!--        /main/soloreview       -->
+        <activity
+            android:name=".screens.main.soloreview.quiz.SoloQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.soloreview.loading.SoloReviewLoadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.SoloReviewLobbyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.soloreview.scoretally.SoloScoreTallyActivity"
+            android:exported="false" />
+
+
+        <!--        /sub       -->
+        <activity
+            android:name=".screens.sub.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.sub.faqs.FAQSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.sub.history.HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.sub.leaderboards.LeaderboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.sub.settings.SettingsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />

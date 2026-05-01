@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+        android:id="@+id/sideMenu"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <!-- Layer 1: background image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/wildquestbg"
+            android:scaleType="centerCrop" />
+
+        <!-- Layer 2: maroon overlay on top -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_maroon"
+            android:alpha="0.87"/>
+
+        <!-- Layer 3: your actual sidebar content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_weight="1"
+                android:background="@drawable/round_profile"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/cowboy"
+                />
+            <TextView
+                android:id="@+id/menu_profiled_id"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+            <LinearLayout
+                android:layout_weight="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                >
+                <Button
+                    android:id="@+id/menu_homebtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/modern"
+                    android:textSize="10sp"
+                    />
+                <Button
+                    android:id="@+id/menu_profilebtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/modern"
+                    android:textSize="10sp"
+                    />
+                <Button
+                    android:id="@+id/menu_groupsbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="My Groups"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/modern"
+                    android:textSize="10sp"
+                    />
+                <Button
+                    android:id="@+id/menu_historybtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quest History"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/modern"
+                    android:textSize="10sp"
+                    />
+                <Button
+                    android:id="@+id/menu_settingsbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/modern"
+                    android:textSize="10sp"
+                    />
+                <Button
+                    android:id="@+id/menu_faqsbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FAQ's"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/modern"
+                    android:textSize="10sp"
+                    />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/menu_logoutbtn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log out"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/light_gray"
+                android:textSize="10sp"
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/sideNotifications"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end">
+
+        <!-- Layer 1: background image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/wildquestbg"
+            android:scaleType="centerCrop" />
+
+        <!-- Layer 2: maroon overlay on top -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_maroon"
+            android:alpha="0.87"/>
+
+        <!-- Layer 3: your actual sidebar content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- TODO notification items here -->
+
+        </LinearLayout>
+    </FrameLayout>
+
+</merge>
