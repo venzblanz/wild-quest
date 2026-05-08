@@ -5,11 +5,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.android.finalproject.R
 import com.android.finalproject.screens.main.dashboard.DashboardActivity
-import com.android.finalproject.screens.sub.logopage.LogoPageActivity
 import com.android.finalproject.screens.main.register.RegisterActivity
 import com.android.finalproject.utils.getButtonView
-import com.android.finalproject.utils.getImgButtonView
 import com.android.finalproject.utils.getTextInputEditText
+import com.android.finalproject.utils.loadScreen
 import com.android.finalproject.utils.start
 import com.android.finalproject.utils.toast
 
@@ -38,19 +37,12 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         getButtonView(R.id.login_registerbutton).setOnClickListener {
             presenter.navToReg()
         }
-
-        getImgButtonView(R.id.login_logobutton).setOnClickListener {
-            presenter.navToLogo()
-        }
     }
 
     override fun navigateToRegister() {
         start(RegisterActivity::class.java)
     }
 
-    override fun navigateToLogo() {
-        start(LogoPageActivity::class.java)
-    }
 
     override fun showSuccessMsg() {
         toast("Login successful!")
@@ -65,9 +57,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun navigateToDashboard() {
-        start(DashboardActivity::class.java)
-        finish()
+        loadScreen(this,DashboardActivity::class.java)
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        finish()
     }
 
     override fun genericError() {

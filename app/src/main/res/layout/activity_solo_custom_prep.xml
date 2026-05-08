@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wildquestbg"
+    tools:context=".screens.main.soloreview.lobby.custom.prep.SoloCustomPrepActivity"
+    android:orientation="vertical">
+
+    <!-- Nav Bar -->
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/maroon"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:layout_marginBottom="9dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="2"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_gravity="bottom"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="9dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/contents"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="16dp"
+                android:padding="20dp"
+                android:elevation="20dp"
+                android:background="@drawable/rounded_corners"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Set up your Questions"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/irishgrover"
+                    android:textAlignment="center" />
+
+                <RadioGroup
+                    android:id="@+id/questionTypeGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp">
+
+                    <RadioButton
+                        android:id="@+id/rbMultipleChoice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        style="@style/MaroonRadioButton"
+                        android:buttonTint="@color/maroon"
+                        android:text="Multiple Choice"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/rbIdentification"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        style="@style/MaroonRadioButton"
+                        android:buttonTint="@color/maroon"
+                        android:layout_weight="1"
+                        android:text="Identification" />
+
+                </RadioGroup>
+                <FrameLayout
+                    android:id="@+id/questionFormContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Saved Questions"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/irishgrover"
+                    android:layout_marginTop="16dp" />
+
+                <ListView
+                    android:id="@+id/questionListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/startBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rounded_clickable_linear"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/btn_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/irishgrover"
+                        android:text="Start Review"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- Footer Logo -->
+            <include layout="@layout/partial_footer_logo_home_button" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

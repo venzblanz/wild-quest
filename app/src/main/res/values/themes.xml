@@ -12,4 +12,7 @@
         <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
     </style>
     <style name="Theme.FinalProject" parent="Base.Theme.FinalProject" />
+    <style name="MaroonRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/maroon</item>
+    </style>
 </resources>

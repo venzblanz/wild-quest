@@ -8,11 +8,9 @@ interface LoginContract {
         fun navigateToDashboard()
         fun genericError()
         fun navigateToRegister()
-        fun navigateToLogo()
     }
     interface Presenter {
         fun login(username: String, password: String)
-        fun navToLogo()
         fun navToReg()
     }
 }

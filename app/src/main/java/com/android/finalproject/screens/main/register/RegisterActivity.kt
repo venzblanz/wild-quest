@@ -59,6 +59,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
 
     override fun navigateToLogin() {
         start(LoginActivity::class.java)
+        finish()
     }
 
     override fun genericError() {

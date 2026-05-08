@@ -7,14 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    Side Bars   -->
+
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray"
+        android:background="@drawable/wildquestbg"
         android:orientation="vertical"
-        tools:context=".screens.main.soloreview.lobby.SoloReviewLobbyActivity">
+        tools:context=".screens.main.soloreview.SoloReviewActivity">
 
 
         <!--
@@ -93,7 +93,7 @@
                 tools:ignore="NestedWeights">
 
                 <LinearLayout
-                    android:id="@+id/soloreview_solobutton"
+                    android:id="@+id/soloreview_compebutton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@drawable/rounded_clickable_linear"
@@ -123,7 +123,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/soloreview_groupbutton"
+                    android:id="@+id/soloreview_custombutton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="10dp"

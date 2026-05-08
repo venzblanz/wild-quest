@@ -6,8 +6,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
-    tools:context=".screens.main.soloreview.quiz.SoloQuizActivity"
+    android:background="@drawable/wildquestbg"
+    tools:context=".screens.main.soloreview.lobby.competitive.quiz.SoloCompeQuizActivity"
     android:orientation="vertical">
 
     <!-- Nav Bar -->

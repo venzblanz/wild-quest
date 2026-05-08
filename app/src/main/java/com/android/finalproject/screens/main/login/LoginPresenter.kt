@@ -28,10 +28,6 @@ class LoginPresenter(
         }
     }
 
-    override fun navToLogo() {
-        view.navigateToLogo()
-    }
-
     override fun navToReg() {
         view.navigateToRegister()
     }

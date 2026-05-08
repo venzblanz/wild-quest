@@ -1,10 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.main.groupreview.loading.GroupReviewLoadingActivity">
+    android:background="@drawable/wildquestbg"
+    tools:context=".screens.main.groupreview.lobby.competitive.loading.GroupCompeLoadingActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--
+        Nav Bar
+    -->
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/maroon"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:layout_marginBottom="9dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+        <ImageButton
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="2"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"/>
+
+        <ImageButton
+            android:id="@+id/notification_icon"
+            android:layout_width="0dp"
+            android:layout_gravity="bottom"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="9dp"
+            android:scaleType="fitCenter"
+            android:background="@color/maroon"
+            android:src="@drawable/chat" />
+
+    </LinearLayout>
+
+    <!--
+        Card
+    -->
+    <LinearLayout
+        android:id="@+id/contents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:padding="20dp"
+        android:layout_weight="1"
+        android:elevation="20dp"
+        android:background="@drawable/rounded_corners"
+        android:orientation="vertical">
+
+        <!--
+            Card Header
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:paddingTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/irishgrover"
+                android:text="GROUP REVIEW"
+                android:textAlignment="center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/irishgrover"
+                android:text="(Competitive)"
+                android:textAlignment="center" />
+            <TextView
+                android:id="@+id/loadingText"
+                android:padding="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/irishgrover"
+                android:text="Looking for Rivals..."
+                android:textAlignment="center" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wild_animals"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/irishgrover"
+                android:text="Group Name"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <!--
+            Buttons
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            tools:ignore="NestedWeights">
+
+            <LinearLayout
+                android:id="@+id/cancelBtn"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_clickable_linear"
+                android:layout_marginTop="20dp"
+                android:padding="20dp"
+                >
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:padding="15dp"
+                    android:src="@drawable/close"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/irishgrover"
+                    android:text="Cancel Waiting"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--
+        Footer Logo
+    -->
+    <include layout="@layout/partial_footer_logo_home_button" />
+
+</LinearLayout>

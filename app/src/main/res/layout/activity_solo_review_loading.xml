@@ -6,8 +6,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
-    tools:context=".screens.main.soloreview.loading.SoloReviewLoadingActivity"
+    android:background="@drawable/wildquestbg"
+    tools:context=".screens.main.soloreview.lobby.competitive.loading.SoloCompeLoadingActivity"
     android:orientation="vertical">
 
 
@@ -98,6 +98,7 @@
                 android:text="(Competitive)"
                 android:textAlignment="center" />
             <TextView
+                android:id="@+id/loadingText"
                 android:padding="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,6 +138,7 @@
             tools:ignore="NestedWeights">
 
             <LinearLayout
+                android:id="@+id/cancelBtn"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"

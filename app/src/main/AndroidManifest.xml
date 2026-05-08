@@ -13,82 +13,120 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
-
-        <!--        /main       -->
+        <activity
+            android:name=".screens.main.groupreview.lobby.custom.scoretally.GroupCustomScoreTallyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.lobby.custom.room.GroupCustomRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.lobby.custom.quiz.GroupCustomQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.lobby.custom.prep.GroupCustomPrepActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.main.groupreview.lobby.competitive.room.GroupCompeRoomActivity"
+            android:exported="false" /> <!-- /main -->
         <activity
             android:name=".screens.sub.logopage.LogoPageActivity"
-            android:exported="false" />
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <activity
-            android:name=".screens.main.register.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.main.login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.main.dashboard.DashboardActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <!--        /main/groupreview       -->
         <activity
-            android:name=".screens.main.groupreview.loading.GroupReviewLoadingActivity"
-            android:exported="false" />
+            android:name=".screens.main.register.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".screens.main.groupreview.lobby.GroupReviewLobbyActivity"
-            android:exported="false" />
+            android:name=".screens.main.login.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".screens.main.groupreview.scoretally.GroupScoreTallyActivity"
-            android:exported="false" />
+            android:name=".screens.main.dashboard.DashboardActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" /> <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- /main/groupreview -->
         <activity
-            android:name=".screens.main.groupreview.quiz.GroupQuizActivity"
-            android:exported="false" />
-
-        <!--        /main/soloreview       -->
+            android:name=".screens.main.groupreview.lobby.competitive.loading.GroupCompeLoadingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".screens.main.soloreview.quiz.SoloQuizActivity"
-            android:exported="false" />
+            android:name=".screens.main.groupreview.GroupReviewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".screens.main.soloreview.loading.SoloReviewLoadingActivity"
-            android:exported="false" />
+            android:name=".screens.main.groupreview.lobby.competitive.scoretally.GroupCompeScoreTallyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".screens.main.soloreview.lobby.SoloReviewLobbyActivity"
-            android:exported="false" />
+            android:name=".screens.main.groupreview.lobby.competitive.quiz.GroupCompeQuizActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" /> <!-- /main/soloreview -->
         <activity
-            android:name=".screens.main.soloreview.scoretally.SoloScoreTallyActivity"
-            android:exported="false" />
-
-
-        <!--        /sub       -->
+            android:name=".screens.main.soloreview.lobby.competitive.quiz.SoloCompeQuizActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.competitive.loading.SoloCompeLoadingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.SoloReviewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.competitive.scoretally.SoloCompeScoreTallyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.custom.loading.SoloCustomLoadingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.custom.prep.SoloCustomPrepActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.custom.quiz.SoloCustomQuizActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.soloreview.lobby.custom.scoretally.SoloCustomScoreTallyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" /> <!-- /sub -->
         <activity
             android:name=".screens.sub.profile.ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".screens.sub.faqs.FAQSActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".screens.sub.history.HistoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".screens.sub.leaderboards.LeaderboardActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".screens.sub.settings.SettingsActivity"
-            android:exported="false" />
-
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

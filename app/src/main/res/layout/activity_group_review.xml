@@ -1,10 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screens.main.groupreview.lobby.GroupReviewLobbyActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wildquestbg"
+        android:orientation="vertical"
+        tools:context=".screens.main.groupreview.lobby.competitive.loading.GroupCompeLoadingActivity">
+
+
+        <!--
+            Nav Bar
+        -->
+        <include layout="@layout/partial_navigation_bar" />
+
+        <!--
+            Card
+        -->
+
+        <!--    Footer Logo     -->
+        <LinearLayout
+            android:id="@+id/contents"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!--
+                Card Header
+            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/soloreview_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/irishgrover"
+                    android:padding="20dp"
+                    android:text="GROUP REVIEW\n"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/soloreview_title_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_group" />
+
+                <TextView
+                    android:id="@+id/soloreview_pick_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/irishgrover"
+                    android:text="Pick your Style!"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!--
+                Buttons
+            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+                <LinearLayout
+                    android:id="@+id/soloreview_solobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/rounded_clickable_linear"
+                    android:orientation="horizontal"
+
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/soloreview_button1_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:src="@drawable/trophy" />
+
+                    <TextView
+                        android:id="@+id/soloreview_button1_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/irishgrover"
+                        android:text="Competitive Room"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/soloreview_groupbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_clickable_linear"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/soloreview_button2_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:padding="10dp"
+                        android:src="@drawable/pencil" />
+
+                    <TextView
+                        android:id="@+id/soloreview_button2_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/irishgrover"
+                        android:text="Custom Room"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Message icon -->
+            <ImageButton
+                android:id="@+id/message_icon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_shape_gray"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_messages" />
+        </LinearLayout>
+
+        <include layout="@layout/partial_footer_logo_home_button" />
+    </LinearLayout>
+
+    <include layout="@layout/partial_side_bars" />
+</androidx.drawerlayout.widget.DrawerLayout>
