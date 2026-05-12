@@ -8,17 +8,17 @@ import android.widget.BaseAdapter
 import android.widget.ImageButton
 import android.widget.TextView
 import com.android.finalproject.R
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 
 class QuestionAdapter(
     private val context: Context,
-    private val questions: ArrayList<Questions>,
+    private val questions: ArrayList<QuizQuestion>,
     private val onDelete: (Int) -> Unit
 ) : BaseAdapter() {
 
     override fun getCount(): Int = questions.size
 
-    override fun getItem(position: Int): Any = questions[position]
+    override fun getItem(position: Int): QuizQuestion = questions[position]
 
     override fun getItemId(position: Int): Long = position.toLong()
 
@@ -32,8 +32,13 @@ class QuestionAdapter(
 
         val item = questions[position]
 
-        questionPreview.text = item.question
-        questionType.text = item.type
+        questionPreview.text = item.questionText
+
+        questionType.text = when (item.type.lowercase()) {
+            "identification" -> "ID"
+            "multiple choice", "multiple_choice" -> "MC"
+            else -> item.type
+        }
 
         deleteBtn.setOnClickListener {
             onDelete(position)

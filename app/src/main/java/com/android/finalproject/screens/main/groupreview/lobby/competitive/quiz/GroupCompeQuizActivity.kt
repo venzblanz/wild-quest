@@ -11,8 +11,9 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.android.finalproject.R
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 import com.android.finalproject.screens.main.dashboard.DashboardActivity
 import com.android.finalproject.screens.main.groupreview.lobby.competitive.scoretally.GroupCompeScoreTallyActivity
 import com.android.finalproject.utils.loadScreen
@@ -78,8 +79,8 @@ class GroupCompeQuizActivity : AppCompatActivity(), GroupCompeQuizContract.View 
             presenter.previousQuestion()
         }
 
-        val model = GroupCompeQuizModel()
-        presenter = GroupCompeQuizPresenter(this, model)
+        val model = GroupCompeQuizModel(this)
+        presenter = GroupCompeQuizPresenter(this, model, lifecycleScope)
         presenter.startQuiz()
     }
 
@@ -87,23 +88,23 @@ class GroupCompeQuizActivity : AppCompatActivity(), GroupCompeQuizContract.View 
 
     override fun showAnswerSection(type: String) {
         val questionIndex = presenter.getIndex()
+        val normalizedType = type.lowercase()
 
-        // re-inflate if type changed OR if it's a different question index
-        if (currentStubType == type && currentStubIndex == questionIndex) return
+        if (currentStubType == normalizedType && currentStubIndex == questionIndex) return
 
         val container = findViewById<FrameLayout>(R.id.quiz_answer_container)
         container.removeAllViews()
 
         layoutInflater.inflate(
-            when (type) {
+            when (normalizedType) {
                 "identification" -> R.layout.partial_identification_quiz
-                else             -> R.layout.partial_multiplechoice_quiz
+                else -> R.layout.partial_multiplechoice_quiz
             },
             container,
             true
         )
 
-        currentStubType  = type
+        currentStubType = normalizedType
         currentStubIndex = questionIndex
 
         if (type == "identification") {
@@ -148,27 +149,31 @@ class GroupCompeQuizActivity : AppCompatActivity(), GroupCompeQuizContract.View 
         }
     }
 
-    override fun showQuestion(question: Questions, questionNumber: Int, total: Int) {
+    override fun showQuestion(question: QuizQuestion, questionNumber: Int, total: Int) {
         tvQuestionNumber.text = "Question $questionNumber / $total"
-        tvQuestion.text = question.question
+        tvQuestion.text = question.questionText
         buttonPressed = false
 
         prevBtn.visibility = if (questionNumber > 1) View.VISIBLE else View.GONE
 
-        // reset multiple choice buttons text + background + enabled state
+        val options = listOf(
+            question.optionA,
+            question.optionB,
+            question.optionC,
+            question.optionD
+        )
+
         listOf(btnOptionA, btnOptionB, btnOptionC, btnOptionD)
             .forEachIndexed { i, btn ->
                 btn?.isEnabled = true
-                btn?.text = "${'A' + i}.  ${question.choices.getOrElse(i) { "" }}"
+                btn?.text = "${'A' + i}.  ${options.getOrElse(i) { "" }}"
                 btn?.setBackgroundResource(R.drawable.button_outlined)
             }
 
-        // reset identification input
         etAnswer?.isEnabled = true
         etAnswer?.text?.clear()
 
-        // reset answer button label and visibility based on type
-        if (question.type == "identification") {
+        if (question.type.equals("Identification", ignoreCase = true)) {
             answerBtn.visibility = View.VISIBLE
             btnLabel.text = "Answer"
         } else {

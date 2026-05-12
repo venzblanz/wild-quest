@@ -1,27 +1,22 @@
-package com.android.finalproject.screens.main.soloreview.lobby.competitive.quiz
-
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 
 interface SoloCompeQuizContract {
-    interface View {
-        // question display
-        fun showQuestion(question: Questions, questionNumber: Int, total: Int)
-        fun showAnswerSection(type: String)
-        fun showScore(score: Int)
 
-        // answer feedback
+    interface View {
+        fun showAnswerSection(type: String)
+        fun showQuestion(question: QuizQuestion, questionNumber: Int, total: Int)
+        fun showPreviousAnswer(selectedAnswer: String, correctAnswer: String)
+        fun showScore(score: Int)
         fun highlightCorrect(correctAnswer: String)
         fun highlightWrong(selectedAnswer: String, correctAnswer: String)
-
-        // navigation
-        fun showPreviousAnswer(selectedAnswer: String, correctAnswer: String)
         fun navigateToResults(score: Int, total: Int)
         fun navigateToHome()
     }
+
     interface Presenter {
         fun startQuiz()
         fun submitAnswer(answer: String)
-        fun previousQuestion();
+        fun previousQuestion()
         fun nextQuestion()
         fun cancelQuiz()
     }

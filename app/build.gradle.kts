@@ -45,21 +45,11 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // ─── ROOM DATABASE ──────────────────────────────────────────
-    // room-runtime: the core Room library (Database, Dao, Entity)
     implementation("androidx.room:room-runtime:2.6.1")
-
-    // room-ktx: adds Kotlin Coroutine support (suspend functions in DAO)
     implementation("androidx.room:room-ktx:2.6.1")
-
-    // kapt: annotation processor — reads @Entity, @Dao, @Database and
-    // generates the actual database implementation code during build
     kapt("androidx.room:room-compiler:2.6.1")
-
-    // ─── COROUTINES ─────────────────────────────────────────────
-    // Needed for lifecycleScope.launch { } in activities
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    // ────────────────────────────────────────────────────────────
+    implementation("com.google.code.gson:gson:2.10.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

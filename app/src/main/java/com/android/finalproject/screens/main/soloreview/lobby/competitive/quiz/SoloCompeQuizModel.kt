@@ -1,22 +1,45 @@
 package com.android.finalproject.screens.main.soloreview.lobby.competitive.quiz
 
+import android.content.Context
+import com.android.finalproject.data.database.WildQuestDatabase
 import com.android.finalproject.data.questions.AnsweredQuestion
-import com.android.finalproject.data.questions.QuestionStore
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
+import com.android.finalproject.data.questions.toQuizQuestion
 
-class SoloCompeQuizModel {
-    private val questions: List<Questions> = QuestionStore.questions.shuffled()
+class SoloCompeQuizModel(private val context: Context) {
+    private val db = WildQuestDatabase.getDatabase(context)
+    private var questions: List<QuizQuestion> = emptyList()
     private val answeredQuestions: MutableMap<Int, AnsweredQuestion> = mutableMapOf()
-    fun getQuestions(): List<Questions> = questions
-    fun getTotalCount(): Int = questions.size
-    fun getQuestion(index: Int): Questions = questions[index]
-    fun isCorrect(index: Int, answer: String): Boolean{
-        return questions[index].correctAnswer.trim().equals(answer.trim(),ignoreCase = true)
+
+    suspend fun loadQuestions() {
+        questions = db.questionDao()
+            .getRandomQuestions(20)
+            .map { it.toQuizQuestion() }
+    }
+    fun getQuestions(): List<QuizQuestion> {
+        return questions
+    }
+    fun getTotalCount(): Int {
+        return questions.size
+    }
+    fun getQuestion(index: Int): QuizQuestion {
+        return questions[index]
+    }
+    fun isCorrect(index: Int, answer: String): Boolean {
+        return questions[index].questionAnswer.trim()
+            .equals(answer.trim(), ignoreCase = true)
     }
     fun saveAnswer(index: Int, selected: String, correct: Boolean) {
-        answeredQuestions[index] = AnsweredQuestion(questions[index], selected, correct)
+        answeredQuestions[index] = AnsweredQuestion(
+            question = questions[index],
+            selectedAnswer = selected,
+            isCorrect = correct
+        )
     }
-    fun getAnsweredQuestion(index: Int): AnsweredQuestion? = answeredQuestions[index]
-
-    fun isAnswered(index: Int): Boolean = answeredQuestions.containsKey(index)
+    fun getAnsweredQuestion(index: Int): AnsweredQuestion? {
+        return answeredQuestions[index]
+    }
+    fun isAnswered(index: Int): Boolean {
+        return answeredQuestions.containsKey(index)
+    }
 }

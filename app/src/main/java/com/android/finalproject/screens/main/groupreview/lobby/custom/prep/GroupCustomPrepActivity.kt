@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.finalproject.R
 import com.android.finalproject.data.adapter.QuestionAdapter
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 import com.android.finalproject.screens.main.groupreview.lobby.custom.quiz.GroupCustomQuizActivity
 
 class GroupCustomPrepActivity : AppCompatActivity(), GroupCustomPrepContract.View {
@@ -28,7 +28,7 @@ class GroupCustomPrepActivity : AppCompatActivity(), GroupCustomPrepContract.Vie
     private lateinit var startBtn: LinearLayout
 
     private lateinit var adapter: QuestionAdapter
-    private val displayedQuestions = ArrayList<Questions>()
+    private val displayedQuestions = ArrayList<QuizQuestion>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -141,7 +141,7 @@ class GroupCustomPrepActivity : AppCompatActivity(), GroupCustomPrepContract.Vie
         questionFormContainer.addView(formView)
     }
 
-    override fun refreshQuestionList(questions: List<Questions>) {
+    override fun refreshQuestionList(questions: List<QuizQuestion>) {
         displayedQuestions.clear()
         displayedQuestions.addAll(questions)
         adapter.notifyDataSetChanged()
@@ -151,7 +151,7 @@ class GroupCustomPrepActivity : AppCompatActivity(), GroupCustomPrepContract.Vie
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun navigateToCustomQuiz(questions: ArrayList<Questions>) {
+    override fun navigateToCustomQuiz(questions: ArrayList<QuizQuestion>) {
         val intent = Intent(this, GroupCustomQuizActivity::class.java)
 
         intent.putParcelableArrayListExtra("questions", questions)

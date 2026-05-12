@@ -3,6 +3,7 @@ package com.android.finalproject.screens.main.register
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.android.finalproject.R
 import com.android.finalproject.screens.main.login.LoginActivity
 import com.android.finalproject.utils.getButtonView
@@ -14,10 +15,11 @@ import com.android.finalproject.utils.toast
 class RegisterActivity : AppCompatActivity(), RegisterContract.View {
 
     private lateinit var presenter: RegisterPresenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 finish()
@@ -25,7 +27,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
             }
         })
 
-        presenter = RegisterPresenter(this, RegisterModel())
+        presenter = RegisterPresenter(this, RegisterModel(this), lifecycleScope)
 
         getButtonView(R.id.reg_confirmbutton).setOnClickListener {
             val username =          getTextInputEditText(R.id.register_edittext_username)

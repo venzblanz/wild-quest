@@ -1,6 +1,6 @@
 package com.android.finalproject.screens.main.soloreview.lobby.custom.prep
 
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 
 class SoloCustomPrepPresenter(
     private val view: SoloCustomPrepContract.View,
@@ -35,11 +35,16 @@ class SoloCustomPrepPresenter(
             return
         }
 
-        val customQuestion = Questions(
-            question = question,
-            choices = listOf(optionA, optionB, optionC, optionD),
-            correctAnswer = answer,
-            type = "mulitple_choice"
+        val customQuestion = QuizQuestion(
+            questionText = question,
+            questionAnswer = answer,
+            points = 1,
+            category = "Custom",
+            type = "Multiple Choice",
+            optionA = optionA,
+            optionB = optionB,
+            optionC = optionC,
+            optionD = optionD
         )
 
         model.addQuestion(customQuestion)
@@ -53,11 +58,16 @@ class SoloCustomPrepPresenter(
             return
         }
 
-        val customQuestion = Questions(
-            question = question,
-            choices = emptyList(),
-            correctAnswer = answer,
-            type = "identification"
+        val customQuestion = QuizQuestion(
+            questionText = question,
+            questionAnswer = answer,
+            points = 1,
+            category = "Custom",
+            type = "Identification",
+            optionA = "",
+            optionB = "",
+            optionC = "",
+            optionD = ""
         )
 
         model.addQuestion(customQuestion)

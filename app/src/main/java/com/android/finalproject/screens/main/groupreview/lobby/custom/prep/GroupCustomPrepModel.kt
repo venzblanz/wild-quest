@@ -1,11 +1,11 @@
 package com.android.finalproject.screens.main.groupreview.lobby.custom.prep
 
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 
 class GroupCustomPrepModel {
-    private val questions = ArrayList<Questions>()
+    private val questions = ArrayList<QuizQuestion>()
 
-    fun addQuestion(question: Questions) {
+    fun addQuestion(question: QuizQuestion) {
         questions.add(question)
     }
 
@@ -15,7 +15,7 @@ class GroupCustomPrepModel {
         }
     }
 
-    fun getQuestions(): ArrayList<Questions> {
+    fun getQuestions(): ArrayList<QuizQuestion> {
         return ArrayList(questions)
     }
 

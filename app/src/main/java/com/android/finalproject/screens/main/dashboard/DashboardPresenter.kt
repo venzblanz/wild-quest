@@ -1,10 +1,19 @@
 package com.android.finalproject.screens.main.dashboard
 
-class DashboardPresenter (private val view: DashboardContract.View, private val dashboardModel: DashboardModel) :
+import androidx.lifecycle.LifecycleCoroutineScope
+import kotlinx.coroutines.launch
+
+class DashboardPresenter (private val view: DashboardContract.View, private val dashboardModel: DashboardModel,
+                          private val lifecycleScope: LifecycleCoroutineScope
+) :
     DashboardContract.Presenter {
     override fun setProfileID() {
-        if(!dashboardModel.getUser().username.isNullOrEmpty()){
-            view.setProfileID("${dashboardModel.getUser().username}")
+        val username = dashboardModel.getUser().username  // use email to query DB
+        if (username.isEmpty()) return
+
+        lifecycleScope.launch {
+            val fullName = dashboardModel.getFullName(username)
+            view.setProfileID(fullName)  // shows "Wild Adventurer X" instead of username
         }
     }
     override fun navToSoloRev(){

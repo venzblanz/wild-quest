@@ -154,16 +154,23 @@
             <!--
                 Message icon
             -->
-            <ImageButton
+            <LinearLayout
                 android:id="@+id/message_icon"
-                android:layout_width="55dp"
-                android:layout_height="0dp"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/rounded_shape_gray"
-                android:scaleType="fitCenter"
-                android:src="@drawable/icon_messages" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:background="@drawable/message_corner"
+                android:layout_margin="5dp"
+                >
+                <ImageButton
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/message_red" />
+            </LinearLayout>
         </LinearLayout>
 
         <!--

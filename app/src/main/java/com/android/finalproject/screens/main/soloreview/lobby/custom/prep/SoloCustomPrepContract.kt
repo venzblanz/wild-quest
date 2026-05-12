@@ -1,15 +1,15 @@
 package com.android.finalproject.screens.main.soloreview.lobby.custom.prep
 
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 
 interface SoloCustomPrepContract {
 
     interface View {
         fun showMultipleChoiceForm()
         fun showIdentificationForm()
-        fun refreshQuestionList(questions: List<Questions>)
+        fun refreshQuestionList(questions: List<QuizQuestion>)
         fun showMessage(message: String)
-        fun navigateToCustomQuiz(questions: ArrayList<Questions>)
+        fun navigateToCustomQuiz(questions: ArrayList<QuizQuestion>)
     }
 
     interface Presenter {

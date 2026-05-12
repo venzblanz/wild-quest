@@ -1,9 +1,12 @@
 package com.android.finalproject.screens.main.login
 
-import com.android.finalproject.data.users.UserStore
+import android.content.Context
+import com.android.finalproject.data.database.WildQuestDatabase
+import com.android.finalproject.data.tables.UserEntity
 
-class LoginModel {
-    fun login(username: String, password: String): Boolean {
-        return UserStore.login(username, password)
+class LoginModel (private val context: Context){
+    private val db = WildQuestDatabase.getDatabase(context)
+    suspend fun login(username: String, password: String): UserEntity? {
+        return db.userDao().login(username, password)
     }
 }

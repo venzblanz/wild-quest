@@ -10,10 +10,11 @@ import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.finalproject.R
 import com.android.finalproject.data.adapter.QuestionAdapter
-import com.android.finalproject.data.questions.Questions
+import com.android.finalproject.data.questions.QuizQuestion
 import com.android.finalproject.screens.main.soloreview.lobby.custom.quiz.SoloCustomQuizActivity
 
 class SoloCustomPrepActivity : AppCompatActivity(), SoloCustomPrepContract.View {
@@ -29,7 +30,7 @@ class SoloCustomPrepActivity : AppCompatActivity(), SoloCustomPrepContract.View 
     private lateinit var startBtn: LinearLayout
 
     private lateinit var adapter: QuestionAdapter
-    private val displayedQuestions = ArrayList<Questions>()
+    private val displayedQuestions = ArrayList<QuizQuestion>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,10 +60,46 @@ class SoloCustomPrepActivity : AppCompatActivity(), SoloCustomPrepContract.View 
 
     private fun setupListView() {
         adapter = QuestionAdapter(this, displayedQuestions) { position ->
-            presenter.deleteQuestion(position)
+            val view = layoutInflater.inflate(R.layout.dialog_delete, null)
+            val dialog = AlertDialog.Builder(this)
+                .setView(view)
+                .create()
+            view.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
+                dialog.dismiss()
+            }
+
+            view.findViewById<Button>(R.id.btn_delete).setOnClickListener {
+                presenter.deleteQuestion(position)
+                dialog.dismiss()
+            }
+
+            dialog.show()
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
 
         questionListView.adapter = adapter
+
+        questionListView.setOnItemClickListener { _, _, position, _ ->
+            val selectedQuestion = displayedQuestions[position]
+
+            Toast.makeText(
+                this,
+                "Question: ${selectedQuestion.questionText}",
+                Toast.LENGTH_SHORT
+            ).show()
+         }
+
+        questionListView.setOnItemLongClickListener { _, _, position, _ ->
+            val selectedQuestion = displayedQuestions[position]
+
+            Toast.makeText(
+                this,
+                "Answer: ${selectedQuestion.questionAnswer}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            true
+        }
     }
 
     private fun setupListeners() {
@@ -142,7 +179,7 @@ class SoloCustomPrepActivity : AppCompatActivity(), SoloCustomPrepContract.View 
         questionFormContainer.addView(formView)
     }
 
-    override fun refreshQuestionList(questions: List<Questions>) {
+    override fun refreshQuestionList(questions: List<QuizQuestion>) {
         displayedQuestions.clear()
         displayedQuestions.addAll(questions)
         adapter.notifyDataSetChanged()
@@ -152,7 +189,7 @@ class SoloCustomPrepActivity : AppCompatActivity(), SoloCustomPrepContract.View 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun navigateToCustomQuiz(questions: ArrayList<Questions>) {
+    override fun navigateToCustomQuiz(questions: ArrayList<QuizQuestion>) {
         val intent = Intent(this, SoloCustomQuizActivity::class.java)
 
         intent.putParcelableArrayListExtra("questions", questions)

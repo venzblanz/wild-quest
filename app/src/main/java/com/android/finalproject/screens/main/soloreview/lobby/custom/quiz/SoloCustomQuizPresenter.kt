@@ -1,20 +1,29 @@
 package com.android.finalproject.screens.main.soloreview.lobby.custom.quiz
 
-class SoloCustomQuizPresenter (
-    private val view: SoloCustomQuizContract.View, private val soloCustomQuizModel: SoloCustomQuizModel
+class SoloCustomQuizPresenter(
+    private val view: SoloCustomQuizContract.View,
+    private val soloCustomQuizModel: SoloCustomQuizModel
 ) : SoloCustomQuizContract.Presenter {
+
     private var currIndex = 0
     private var score = 0
 
-    // Helper
-    fun getIndex(): Int{
+    fun getIndex(): Int {
         return currIndex
     }
-    override fun startQuiz(){
+
+    override fun startQuiz() {
         currIndex = 0
         score = 0
-        showCurrentQuestion()
+
+        if (soloCustomQuizModel.getTotalCount() > 0) {
+            view.showScore(score)
+            showCurrentQuestion()
+        } else {
+            view.navigateToHome()
+        }
     }
+
     override fun submitAnswer(answer: String) {
         val correct = soloCustomQuizModel.isCorrect(currIndex, answer)
         val question = soloCustomQuizModel.getQuestion(currIndex)
@@ -22,11 +31,11 @@ class SoloCustomQuizPresenter (
         soloCustomQuizModel.saveAnswer(currIndex, answer, correct)
 
         if (correct) {
-            score++
+            score += question.points
             view.showScore(score)
-            view.highlightCorrect(question.correctAnswer)
+            view.highlightCorrect(question.questionAnswer)
         } else {
-            view.highlightWrong(answer, question.correctAnswer)
+            view.highlightWrong(answer, question.questionAnswer)
         }
     }
 
@@ -39,24 +48,31 @@ class SoloCustomQuizPresenter (
 
     private fun showCurrentQuestion() {
         val question = soloCustomQuizModel.getQuestion(currIndex)
+
         view.showAnswerSection(question.type)
         view.showQuestion(question, currIndex + 1, soloCustomQuizModel.getTotalCount())
 
-        // if already answered, just show the result — don't allow re-answering
         val answered = soloCustomQuizModel.getAnsweredQuestion(currIndex)
+
         if (answered != null) {
-            view.showPreviousAnswer(answered.selectedAnswer, question.correctAnswer)
+            view.showPreviousAnswer(
+                answered.selectedAnswer,
+                question.questionAnswer
+            )
         }
     }
-    override fun nextQuestion(){
+
+    override fun nextQuestion() {
         currIndex++
-        if(currIndex < soloCustomQuizModel.getTotalCount()){
+
+        if (currIndex < soloCustomQuizModel.getTotalCount()) {
             showCurrentQuestion()
-        }else{
+        } else {
             view.navigateToResults(score, soloCustomQuizModel.getTotalCount())
         }
     }
-    override fun cancelQuiz(){
+
+    override fun cancelQuiz() {
         view.navigateToHome()
     }
 }

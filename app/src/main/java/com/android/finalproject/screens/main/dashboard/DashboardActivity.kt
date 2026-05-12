@@ -6,6 +6,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.lifecycleScope
 import com.android.finalproject.R
 import com.android.finalproject.app.WildQuestApp
 import com.android.finalproject.screens.main.groupreview.GroupReviewActivity
@@ -17,7 +18,6 @@ import com.android.finalproject.screens.sub.logopage.LogoPageActivity
 import com.android.finalproject.screens.sub.mygroups.MyGroupsActivity
 import com.android.finalproject.screens.sub.profile.ProfileActivity
 import com.android.finalproject.screens.sub.settings.SettingsActivity
-import com.android.finalproject.utils.getButtonView
 import com.android.finalproject.utils.getDrawerView
 import com.android.finalproject.utils.getImgButtonView
 import com.android.finalproject.utils.getLinearButtonView
@@ -29,8 +29,12 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.View {
     private lateinit var presenter: DashboardPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.statusBarColor = getColor(R.color.maroon)
+        window.navigationBarColor = getColor(R.color.gray)
+
         setContentView(R.layout.activity_dashboard)
-        presenter = DashboardPresenter(this,DashboardModel(application as WildQuestApp))
+        presenter = DashboardPresenter(this,DashboardModel(application as WildQuestApp, this), lifecycleScope)
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val view = layoutInflater.inflate(R.layout.dialog_exit, null)
@@ -65,7 +69,7 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.View {
         }
 
         //other icons
-        getImgButtonView(R.id.message_icon).setOnClickListener{
+        getLinearButtonView(R.id.message_icon).setOnClickListener{
 
         }
         getLinearButtonView(R.id.dashboard_solobutton).setOnClickListener{
@@ -76,25 +80,25 @@ class DashboardActivity : AppCompatActivity(), DashboardContract.View {
         }
 
         // Menu Buttons
-        getButtonView(R.id.menu_homebtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_homebtn).setOnClickListener {
             presenter.navToHome()
         }
-        getButtonView(R.id.menu_profilebtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_profilebtn).setOnClickListener {
             presenter.navToProfile()
         }
-        getButtonView(R.id.menu_groupsbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_groupsbtn).setOnClickListener {
             presenter.navToGroups()
         }
-        getButtonView(R.id.menu_historybtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_historybtn).setOnClickListener {
             presenter.navToHistory()
         }
-        getButtonView(R.id.menu_settingsbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_settingsbtn).setOnClickListener {
             presenter.navToSettings()
         }
-        getButtonView(R.id.menu_faqsbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_faqsbtn).setOnClickListener {
             presenter.navToFAQ()
         }
-        getButtonView(R.id.menu_logoutbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_logoutbtn).setOnClickListener {
             presenter.logout()
         }
     }

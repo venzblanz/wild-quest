@@ -1,7 +1,13 @@
 package com.android.finalproject.screens.main.groupreview.lobby.competitive.quiz
 
+import SoloCompeQuizContract
+import androidx.lifecycle.LifecycleCoroutineScope
+import kotlinx.coroutines.launch
+
 class GroupCompeQuizPresenter (
-    private val view: GroupCompeQuizContract.View, private val groupCompeQuizModel: GroupCompeQuizModel
+    private val view: GroupCompeQuizContract.View,
+    private val groupCompeQuizModel: GroupCompeQuizModel,
+    private val lifecycleCoroutineScope: LifecycleCoroutineScope
 ) : GroupCompeQuizContract.Presenter {
     private var currIndex = 0
     private var score = 0
@@ -11,9 +17,20 @@ class GroupCompeQuizPresenter (
         return currIndex
     }
     override fun startQuiz(){
-        currIndex = 0
-        score = 0
-        showCurrentQuestion()
+        lifecycleCoroutineScope.launch {
+            currIndex = 0
+            score = 0
+
+            groupCompeQuizModel.loadQuestions()
+
+            if (groupCompeQuizModel.getTotalCount() > 0) {
+                view.showScore(score)
+                showCurrentQuestion()
+            } else {
+                // Optional: make a view function for this later
+                view.navigateToHome()
+            }
+        }
     }
     override fun submitAnswer(answer: String) {
         val correct = groupCompeQuizModel.isCorrect(currIndex, answer)
@@ -24,9 +41,9 @@ class GroupCompeQuizPresenter (
         if (correct) {
             score++
             view.showScore(score)
-            view.highlightCorrect(question.correctAnswer)
+            view.highlightCorrect(question.questionAnswer)
         } else {
-            view.highlightWrong(answer, question.correctAnswer)
+            view.highlightWrong(answer, question.questionAnswer)
         }
     }
 
@@ -39,13 +56,17 @@ class GroupCompeQuizPresenter (
 
     private fun showCurrentQuestion() {
         val question = groupCompeQuizModel.getQuestion(currIndex)
+
         view.showAnswerSection(question.type)
         view.showQuestion(question, currIndex + 1, groupCompeQuizModel.getTotalCount())
 
-        // if already answered, just show the result — don't allow re-answering
         val answered = groupCompeQuizModel.getAnsweredQuestion(currIndex)
+
         if (answered != null) {
-            view.showPreviousAnswer(answered.selectedAnswer, question.correctAnswer)
+            view.showPreviousAnswer(
+                answered.selectedAnswer,
+                question.questionAnswer
+            )
         }
     }
     override fun nextQuestion(){

@@ -17,7 +17,6 @@ import com.android.finalproject.screens.sub.logopage.LogoPageActivity
 import com.android.finalproject.screens.sub.mygroups.MyGroupsActivity
 import com.android.finalproject.screens.sub.profile.ProfileActivity
 import com.android.finalproject.screens.sub.settings.SettingsActivity
-import com.android.finalproject.utils.getButtonView
 import com.android.finalproject.utils.getDrawerView
 import com.android.finalproject.utils.getImgButtonView
 import com.android.finalproject.utils.getLinearButtonView
@@ -66,25 +65,25 @@ class SoloReviewActivity : AppCompatActivity(), SoloReviewContract.View {
         }
 
         // Menu Buttons
-        getButtonView(R.id.menu_homebtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_homebtn).setOnClickListener {
             presenter.navToHome()
         }
-        getButtonView(R.id.menu_profilebtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_profilebtn).setOnClickListener {
             presenter.navToProfile()
         }
-        getButtonView(R.id.menu_groupsbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_groupsbtn).setOnClickListener {
             presenter.navToGroups()
         }
-        getButtonView(R.id.menu_historybtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_historybtn).setOnClickListener {
             presenter.navToHistory()
         }
-        getButtonView(R.id.menu_settingsbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_settingsbtn).setOnClickListener {
             presenter.navToSettings()
         }
-        getButtonView(R.id.menu_faqsbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_faqsbtn).setOnClickListener {
             presenter.navToFAQ()
         }
-        getButtonView(R.id.menu_logoutbtn).setOnClickListener {
+        getLinearButtonView(R.id.menu_logoutbtn).setOnClickListener {
             presenter.logout()
         }
     }

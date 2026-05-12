@@ -1,77 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    PROFILE SCREEN
+    Stats are loaded from Room via ProfilePresenter.loadStats()
+    which calls QuizAttemptDAO (COUNT, SUM, MAX queries).
+-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.sub.profile.ProfileActivity"
     android:orientation="vertical"
-    android:background="#5A0F0F">
+    android:background="#5A0F0F"
+    tools:context=".screens.sub.profile.ProfileActivity">
 
+    <!-- Profile avatar -->
     <ImageView
-        android:layout_weight="1"
-        android:background="@drawable/round_profile"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:padding="20dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="8dp"
         android:layout_gravity="center"
         android:src="@drawable/cowboy"
-        />
+
+        android:background="@drawable/round_profile"/>
+
+    <!-- Username -->
     <TextView
         android:id="@+id/profile_profiled_id"
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="10dp"
+        android:textSize="22sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        />
-    <LinearLayout
-        android:layout_weight="10"
+        android:layout_marginBottom="2dp"
+        tools:text="Unwanted"/>
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:id="@+id/profile_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            />
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textColor="#E8A020"
+        android:layout_marginBottom="20dp"
+        tools:text="✦ Wild Explorer ✦"/>
 
-    </LinearLayout>
-    <Button
-        android:id="@+id/profile_backtohomebtn"
+    <!-- ── STATS CARD ─────────────────────────────────────────── -->
+    <!-- Each TextView here is filled by ProfileActivity.setXxx() -->
+    <!-- which is called by ProfilePresenter.loadStats()           -->
+    <!-- which calls QuizAttemptDAO suspend functions in Room      -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="100dp"
+        android:padding="16dp">
+
+        <!-- Row 1: Quizzes Played | Total Points -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <!-- Quizzes Played -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏆"
+                    android:textSize="24sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quizzes Played"
+                    android:textColor="#888888"
+                    android:textSize="12sp"/>
+                <!-- Filled by setQuizCount() -->
+                <TextView
+                    android:id="@+id/profile_quiz_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B0000"
+                    tools:text="128"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#DDDDDD"/>
+
+            <!-- Total Points -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⭐"
+                    android:textSize="24sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Points"
+                    android:textColor="#888888"
+                    android:textSize="12sp"/>
+                <!-- Filled by setTotalScore() -->
+                <TextView
+                    android:id="@+id/profile_total_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B0000"
+                    tools:text="3,420"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Row 2: Best Score | Accuracy -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Best Score -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎯"
+                    android:textSize="24sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Best Score"
+                    android:textColor="#888888"
+                    android:textSize="12sp"/>
+                <!-- Filled by setBestScore() -->
+                <TextView
+                    android:id="@+id/profile_best_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B0000"
+                    tools:text="95"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#DDDDDD"/>
+
+            <!-- Accuracy -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📈"
+                    android:textSize="24sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accuracy"
+                    android:textColor="#888888"
+                    android:textSize="12sp"/>
+                <!-- Filled by setAccuracy() -->
+                <TextView
+                    android:id="@+id/profile_accuracy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#8B0000"
+                    tools:text="82%"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Spacer -->
+    <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+
+    <!-- Back button -->
+    <Button
+        android:id="@+id/profile_backtohomebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
         android:text="Back to Home"
         android:textColor="@color/white"
-        android:backgroundTint="@color/black"
-        android:textSize="10sp"
-        />
+        android:backgroundTint="@color/black"/>
+
 </LinearLayout>

@@ -6,6 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.android.finalproject.R
+import com.android.finalproject.data.database.WildQuestDatabase
+import com.android.finalproject.data.seeders.QuestionSeeder
 import com.android.finalproject.screens.main.login.LoginActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,6 +22,15 @@ class LogoPageActivity : AppCompatActivity() {
         val randomTime = Random.nextLong(1000, 3000)
 
         lifecycleScope.launch {
+            val database = WildQuestDatabase.getDatabase(this@LogoPageActivity)
+
+            val seeder = QuestionSeeder(
+                context = this@LogoPageActivity,
+                questionDAO = database.questionDao()
+            )
+
+            seeder.seedQuestionsIfEmpty()
+
             delay(randomTime)
             val nextActivity = intent.getStringExtra("NEXT_ACTIVITY")
             val flags = intent.getIntExtra("FLAGS",0)

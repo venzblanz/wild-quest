@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/irishgrover"
                 android:text="Home"/>
 

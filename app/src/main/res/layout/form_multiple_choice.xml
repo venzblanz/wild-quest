@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -165,12 +164,12 @@
     <Button
         android:id="@+id/addQuestionBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@drawable/button_outlined"
         android:backgroundTint="@null"
         app:backgroundTint="@null"
         android:textColor="@color/maroon"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="+ Add Question" />
 
 </LinearLayout>

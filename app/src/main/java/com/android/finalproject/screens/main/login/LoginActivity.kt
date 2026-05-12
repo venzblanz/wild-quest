@@ -3,6 +3,7 @@ package com.android.finalproject.screens.main.login
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.android.finalproject.R
 import com.android.finalproject.screens.main.dashboard.DashboardActivity
 import com.android.finalproject.screens.main.register.RegisterActivity
@@ -26,7 +27,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             }
         })
 
-        presenter = LoginPresenter(this, LoginModel())
+        presenter = LoginPresenter(this, LoginModel(this), lifecycleScope)
 
         getButtonView(R.id.login_loginbutton).setOnClickListener {
             val username = getTextInputEditText(R.id.login_edittext_username)
